@@ -42,8 +42,10 @@ resource "mongodbatlas_database_user" "user" {
 }
 
 resource "mongodbatlas_project_ip_access_list" "ip" {
+  for_each = toset(var.ip_address)
+  
   project_id = mongodbatlas_project.example.id
-  ip_address = var.ip_address
+  ip_address = each.value
   comment    = "Allowed IP address"
 }
 
