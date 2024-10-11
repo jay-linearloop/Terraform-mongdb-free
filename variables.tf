@@ -71,7 +71,7 @@ variable "database_password" {
 }
 
 variable "ip_address" {
-  type        = string
+  type        = list(string)
   description = "IP address to whitelist"
   default     = "0.0.0.0/0"  # This allows access from anywhere. Replace with your specific IP for better security.
 }
